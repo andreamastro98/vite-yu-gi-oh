@@ -2,11 +2,17 @@
 
 import axios from 'axios'
 import {store} from './store'
+import NavComp from './components/NavComp.vue'
+import CardComp from './components/CardComp.vue'
+import SingleCardComp from './components/CardComp.vue'
+
 
 export default{
   name:'app',
   components:{
-
+    NavComp,
+    CardComp,
+    SingleCardComp,
   },
   data(){
     return{
@@ -39,7 +45,10 @@ export default{
 </script>
 
 <template>
-  <h1>Ciao mondo</h1>
+  <NavComp/>
+  <main>
+    <CardComp/>
+  </main>
 </template>
 
 <style lang="scss">
