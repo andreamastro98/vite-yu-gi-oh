@@ -29,7 +29,8 @@ export default{
       .then((res)=>{
 
         // associo a datiApi il le 20 carte restituite dall'api
-        const datiApi = res.data;
+        const datiApi = res.data.data;
+        console.log(res.data)
 
         //associo allárray in store.js la const datiApi
         this.store.ArrayCarte = datiApi
@@ -46,7 +47,7 @@ export default{
 
 <template>
   <NavComp/>
-  <main>
+  <main class="py-5">
     <CardComp/>
   </main>
 </template>

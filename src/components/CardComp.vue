@@ -16,11 +16,12 @@
             store
             }
         }   
-    } 
+    }
+
 </script>
 
 <template>
-    <div class="container">
+    <div class="container d-flex flex-wrap">
         <SingleCardComp
         v-for="(elem, index) in store.ArrayCarte"
         :key="index"
