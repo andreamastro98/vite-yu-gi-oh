@@ -1,7 +1,7 @@
 <script>
 
     import { store } from '../store';
-    import SingleCardComp from './SingleCard.vue';
+    import SingleCardComp from './SingleCardComp.vue';
 
 
 

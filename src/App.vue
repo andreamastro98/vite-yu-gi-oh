@@ -4,7 +4,7 @@ import axios from 'axios'
 import {store} from './store'
 import NavComp from './components/NavComp.vue'
 import CardComp from './components/CardComp.vue'
-import SingleCardComp from './components/CardComp.vue'
+import SingleCardComp from './components/SingleCardComp.vue'
 
 
 export default{
