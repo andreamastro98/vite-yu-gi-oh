@@ -5,6 +5,7 @@ export const store = reactive(
         ArrayCarte: [],
         ArrayArchetipi: [],
         selected:'',
+        loadingData: false
     }
 
 )

@@ -6,6 +6,7 @@ import NavComp from './components/NavComp.vue'
 import CardComp from './components/CardComp.vue'
 import SingleCardComp from './components/SingleCardComp.vue'
 import SelectComp from './components/SelectComp.vue'
+import LoaderComp from './components/LoaderComp.vue'
 
 
 export default{
@@ -15,6 +16,7 @@ export default{
     CardComp,
     SingleCardComp,
     SelectComp,
+    LoaderComp
   },
   data(){
     return{
@@ -27,14 +29,15 @@ export default{
 
   },
   computed:{
-    
-
     chiamataApi(){
+
+      store.loadingData = true
 
       if(store.selected !== ''){
         axios.get(` https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.selected}`)
         .then((res)=>{
 
+          store.loadingData = false
           // associo a datiApi il le 20 carte restituite dall'api
           const datiApi = res.data.data;
           //console.log(res.data)
@@ -51,6 +54,7 @@ export default{
         axios.get(' https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
         .then((res)=>{
 
+          store.loadingData = false
           // associo a datiApi il le 20 carte restituite dall'api
           const datiApi = res.data.data;
           //console.log(res.data)
@@ -93,6 +97,7 @@ export default{
   <NavComp/>
   <main class="py-5">
     <SelectComp @select="chiamataApi" class="my-4"/>
+    <LoaderComp v-if="store.loadingData"/>
     <CardComp/>
   </main>
 </template>
