@@ -19,7 +19,6 @@
         @click="$emit('select')"
         class="form-select form-select-sm" 
         aria-label=".form-select-sm example">
-            <option selected>Archetype</option>
             <option :value="store.ArrayArchetipi[index].archetype_name" 
             v-for="(elem, index) in store.ArrayArchetipi" :key="index">{{ store.ArrayArchetipi[index].archetype_name }}</option>
         </select>
