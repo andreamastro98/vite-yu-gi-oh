@@ -22,26 +22,51 @@ export default{
     }    
   },
   created(){
-    this.chiamataApi(),
-    this.chiamataApi2()
+    this.chiamataApi,
+    this.chiamataApi2
 
   },
-  methods:{
+  computed:{
+    
+
     chiamataApi(){
-      axios.get(' https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
-      .then((res)=>{
 
-        // associo a datiApi il le 20 carte restituite dall'api
-        const datiApi = res.data.data;
-        //console.log(res.data)
+      if(store.selected !== ''){
+        axios.get(` https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.selected}`)
+        .then((res)=>{
 
-        //associo all'array in store.js la const datiApi
-        this.store.ArrayCarte = datiApi
+          // associo a datiApi il le 20 carte restituite dall'api
+          const datiApi = res.data.data;
+          //console.log(res.data)
 
-        console.log(this.store.ArrayCarte)
-        }
+          //associo all'array in store.js la const datiApi
+          this.store.ArrayCarte = datiApi
+
+          console.log(this.store.ArrayCarte)
+          }
       
       )
+      } else {
+
+        axios.get(' https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+        .then((res)=>{
+
+          // associo a datiApi il le 20 carte restituite dall'api
+          const datiApi = res.data.data;
+          //console.log(res.data)
+
+          //associo all'array in store.js la const datiApi
+          this.store.ArrayCarte = datiApi
+
+          console.log(this.store.ArrayCarte)
+          }      
+        )
+      }
+
+      
+  },
+  methods:{
+    
     },
     chiamataApi2(){
       axios.get(' https://db.ygoprodeck.com/api/v7/archetypes.php')
@@ -67,7 +92,7 @@ export default{
 <template>
   <NavComp/>
   <main class="py-5">
-    <SelectComp class="my-4"/>
+    <SelectComp @select="chiamataApi" class="my-4"/>
     <CardComp/>
   </main>
 </template>
